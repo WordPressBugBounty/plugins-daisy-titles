@@ -3,7 +3,7 @@ Contributors: daisyplugins
 Tags: titles, hide titles, hide post titles, hide page titles, hide page and post titles
 Requires at least: 5.2
 Tested up to: 6.8
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,9 @@ Not in the current version. The plugin applies the same styling to all selected 
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.0.8 — Jun 14, 2025 =
+* routine maintenance
 
 = 1.0.7 — May 21, 2025 =
 * routine maintenance

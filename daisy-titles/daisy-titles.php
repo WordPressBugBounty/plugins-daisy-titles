@@ -3,7 +3,7 @@
  * Plugin Name:         Daisy Titles
  * Plugin URI:          https://wordpress.org/plugins/daisy-titles
  * Description:        Customize titles with colors, sizes, and fonts. Optionally hide titles on posts and pages.
- * Version:             1.0.7
+ * Version:             1.0.8
  * Requires at least:   5.2
  * Requires PHP:        7.2
  * Author:              DaisyPlugins
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define constants
-define('DAISY_TITLES_VERSION', '1.0.7');
+define('DAISY_TITLES_VERSION', '1.0.8');
 define('DAISY_TITLES_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('DAISY_TITLES_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
@@ -413,11 +413,11 @@ function daisy_titles_options_page() {
                     <div class="daisy-titles-card-body">
                         <div class="daisy-titles-info-item">
                             <h4><span class="dashicons dashicons-admin-plugins"></span> <?php esc_html_e('Version', 'daisy-titles'); ?></h4>
-                            <p>1.0.7</p>
+                            <p>1.0.8</p>
                         </div>
                         <div class="daisy-titles-info-item">
                             <h4><span class="dashicons dashicons-calendar-alt"></span> <?php esc_html_e('Release Date', 'daisy-titles'); ?></h4>
-                            <p>May 21, 2025</p>
+                            <p>June 14, 2025</p>
                         </div>
                         <div class="daisy-titles-info-item">
                             <h4><span class="dashicons dashicons-admin-users"></span> <?php esc_html_e('Author', 'daisy-titles'); ?></h4>
