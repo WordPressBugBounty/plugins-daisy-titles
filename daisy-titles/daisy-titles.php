@@ -3,7 +3,7 @@
  * Plugin Name:         Daisy Titles
  * Plugin URI:          https://wordpress.org/plugins/daisy-titles
  * Description:        Customize titles with colors, sizes, and fonts. Optionally hide titles on posts and pages.
- * Version:             1.0.8
+ * Version:             1.0.10
  * Requires at least:   5.2
  * Requires PHP:        7.2
  * Author:              DaisyPlugins
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define constants
-define('DAISY_TITLES_VERSION', '1.0.8');
+define('DAISY_TITLES_VERSION', '1.0.10');
 define('DAISY_TITLES_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('DAISY_TITLES_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
@@ -413,7 +413,7 @@ function daisy_titles_options_page() {
                     <div class="daisy-titles-card-body">
                         <div class="daisy-titles-info-item">
                             <h4><span class="dashicons dashicons-admin-plugins"></span> <?php esc_html_e('Version', 'daisy-titles'); ?></h4>
-                            <p>1.0.8</p>
+                            <p>1.0.10</p>
                         </div>
                         <div class="daisy-titles-info-item">
                             <h4><span class="dashicons dashicons-calendar-alt"></span> <?php esc_html_e('Release Date', 'daisy-titles'); ?></h4>
@@ -448,7 +448,7 @@ function daisy_titles_options_page() {
 
                     <div class="daisy-titles-card-body">
                         <p><?php esc_html_e('Please consider leaving a review on WordPress.org.', 'daisy-titles'); ?></p>
-                        <a href="https://wordpress.org/support/plugin/daisy-titles/reviews/?filter=5#new-post" class="button" target="_blank"><?php esc_html_e('Leave a Review', 'daisy-titles'); ?></a>
+                        <a href="https://wordpress.org/support/plugin/daisy-titles/reviews/" class="button" target="_blank"><?php esc_html_e('Leave a Review', 'daisy-titles'); ?></a>
                     </div>
                 </div>
 
@@ -597,17 +597,21 @@ function daisy_titles_meta_box_callback($post) {
 // Save metabox data
 add_action('save_post', 'daisy_titles_save_meta_box_data');
 function daisy_titles_save_meta_box_data($post_id) {
-    // Check if our nonce is set
+    // Check if the nonce is set
     if (!isset($_POST['daisy_titles_meta_box_nonce'])) {
         return;
     }
     
-    // Verify that the nonce is valid
-    if (!wp_verify_nonce($_POST['daisy_titles_meta_box_nonce'], 'daisy_titles_save_meta_box_data')) {
+    // Verify that the nonce is valid with proper sanitization
+    $nonce = isset($_POST['daisy_titles_meta_box_nonce']) 
+        ? sanitize_text_field(wp_unslash($_POST['daisy_titles_meta_box_nonce'])) 
+        : '';
+    
+    if (!wp_verify_nonce($nonce, 'daisy_titles_save_meta_box_data')) {
         return;
     }
     
-    // If this is an autosave, our form has not been submitted, so we don't want to do anything
+    // If this is an autosave, the form has not been submitted, so we don't want to do anything
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
@@ -617,9 +621,15 @@ function daisy_titles_save_meta_box_data($post_id) {
         return;
     }
     
-    // Save or delete the meta field
+    // Save or delete the meta field with proper sanitization
     if (isset($_POST['daisy_titles_hide_title'])) {
-        update_post_meta($post_id, '_daisy_titles_hide_title', (bool)$_POST['daisy_titles_hide_title']);
+        // Validate and sanitize the checkbox value
+        $hide_title = isset($_POST['daisy_titles_hide_title']) ? $_POST['daisy_titles_hide_title'] : '';
+        
+        // Since it's a checkbox, it should be 'on' or similar, convert to boolean
+        $hide_title_value = rest_sanitize_boolean($hide_title);
+        
+        update_post_meta($post_id, '_daisy_titles_hide_title', $hide_title_value);
     } else {
         delete_post_meta($post_id, '_daisy_titles_hide_title');
     }

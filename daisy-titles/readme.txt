@@ -1,9 +1,9 @@
-=== Daisy Titles – Style and Hide Titles, Hide Page Titles, Hide Post Titles, Hide Page And Post Titles ===
+=== Daisy Titles — Style & Hide Page and Post Titles ===
 Contributors: daisyplugins
 Tags: titles, hide titles, hide post titles, hide page titles, hide page and post titles
 Requires at least: 5.2
-Tested up to: 6.8
-Stable tag: 1.0.8
+Tested up to: 6.9
+Stable tag: 1.0.10
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -58,6 +58,12 @@ Not in the current version. The plugin applies the same styling to all selected 
 
 == Changelog ==
 
+= 1.0.10 — Feb 02, 2026 =
+* Improved: Plugin security
+
+= 1.0.9 — Jan 01, 2026 =
+* Tested: WordPress 6.9 compatibility
+
 = 1.0.8 — Jun 14, 2025 =
 * routine maintenance
 
@@ -71,12 +77,12 @@ Not in the current version. The plugin applies the same styling to all selected 
 * routine maintenance
 
 = 1.0.4 — Apr 24, 2025 =
-* [add] cleanup after migration
-* [imp] user interface 
+* Added: cleanup after migration
+* Improved: user interface 
 
 = 1.0.3 — Apr 21, 2025 =
-* [add] new feature: hide titles
-* [imp] user interface 
+* Added: new feature of hiding titles
+* Improved: user interface 
 
 = 1.0.2 — Apr 20, 2025 =
 * Second release
